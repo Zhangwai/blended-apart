@@ -1,0 +1,6 @@
+miniapp/production
+miniapp/main
+miniapp/sub
+taro-project/dist
+**/node_modules
+.DS_Store

@@ -1,0 +1,33 @@
+{
+  "pages":[
+    "pages/index/index"
+  ],
+  "subPackages": [
+    {
+      "root": "production/pages",
+      "pages": [
+        "index/index"
+      ]
+    },
+    {
+      "root": "main/pages",
+      "pages": [
+        "index/index"
+      ]
+    },
+    {
+      "root": "sub/pages",
+      "pages": [
+        "sub/index"
+      ]
+    }
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
