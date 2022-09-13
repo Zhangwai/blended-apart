@@ -63,6 +63,9 @@ const config = {
       },
     },
   },
+  alias: {
+    '@/store': path.resolve(__dirname, '..', 'src/store'),
+  },
 };
 
 module.exports = function(merge) {

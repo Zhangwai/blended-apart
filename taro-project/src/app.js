@@ -1,16 +1,10 @@
-import { Component } from 'react'
-import './app.scss'
+import "./app.scss";
+import { Provider } from "react-redux";
+import store from "./store";
 
-class App extends Component {
+const App = ({ children }) => {
+  return <Provider store={store}>{children}</Provider>;
+};
 
-  componentDidMount () {
-    console.log('app launch')
-  }
-
-  // this.props.children 是将要会渲染的页面
-  render () {
-    return this.props.children
-  }
-}
-
-export default App
+export default App;
+  
