@@ -6,18 +6,20 @@ import rootReducer from "./reducers";
 // 收集action存储到全局
 const collectActions = (store) => (next) => (action) => {
   console.log("dispatching", Taro.getApp()?.actions, action);
+  if (["ADD"].includes(action.type)) {
+    // 维护最新的action历史使用记录;类似自增功能需要添加到数组中实现一直增加
+    Taro.getApp()?.actions.push(action);
+  } else {
+    // 类似替换状态功能若actions中不存在则直接push到actions最后，否则就删除之前的action再将新的action添加到actions末尾
+    const index = Taro.getApp()?.actions.findIndex(
+      (item) => item.type === action.type
+    );
+    if (index !== -1) {
+      Taro.getApp()?.actions.splice(index, 1);
+    }
+    Taro.getApp()?.actions.push(action);
+  }
 
-  // const index = Taro.getApp()?.actions.findIndex(
-  //   (item) => item.type === action.type
-  // );
-  // if (index !== -1) {
-  //   Taro.getApp()?.actions.splice(index, 1, action);
-  // } else {
-  //   Taro.getApp()?.actions.push(action);
-  // }
-
-  // 维护最新的action历史使用记录
-  Taro.getApp()?.actions.push(action);
   const res = next(action);
   return res;
 };
